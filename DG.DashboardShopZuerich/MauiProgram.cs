@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DG.DashboardShopZuerich.Services;
+using Microsoft.Extensions.Logging;
 
 namespace DG.DashboardShopZuerich
 {
@@ -17,8 +18,11 @@ namespace DG.DashboardShopZuerich
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            //builder.Services.AddBlazorWebViewDeveloperTools();
+            //builder.Logging.AddDebug();
+
+            // JsonDataService als Singleton registrieren
+            builder.Services.AddSingleton<JsonDataService>(provider => new JsonDataService("C:\\Users\\samvo\\source\\repos\\DG.DashboardShopZuerich\\DG.DashboardShopZuerich\\wwwroot\\employee.json"));
 #endif
 
             return builder.Build();
