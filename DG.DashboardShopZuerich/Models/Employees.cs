@@ -1,6 +1,6 @@
 ﻿namespace DG.DashboardShopZuerich.Models
 {
-    internal class Employees
+    public class Employees
     {
         // Attribute
         public string Name { get; set; }
@@ -8,7 +8,7 @@
         public DateTime Geburtstag { get; set; }
 
         // Konstruktor
-        public JsonDataService(string name, string vorname, DateTime geburtstag)
+        public Employees(string name, string vorname, DateTime geburtstag)
         {
             Name = name;
             Vorname = vorname;

@@ -22,9 +22,7 @@ namespace DG.DashboardShopZuerich
             //builder.Logging.AddDebug();
 
             // JsonDataService als Singleton registrieren
-            builder.Services.AddSingleton<JsonDataService>(provider => new JsonDataService("C:\\Users\\samvo\\source\\repos\\DG.DashboardShopZuerich\\DG.DashboardShopZuerich\\wwwroot\\employee.json"));
 #endif
-
             return builder.Build();
         }
     }
