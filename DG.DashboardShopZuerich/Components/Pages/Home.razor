@@ -2,8 +2,10 @@
 
 <h1>Digitec Dashboard Züri</h1>
 
+<label>Name</label>
+<input type="text" @bind="name" placeholder="Name" />
 <label>Vorname</label>
-<input type="text" placeholder="Vorname"/>
+<input type="text" @bind="vorname" placeholder="Vorname" />
 <label>Geburtstag</label>
-<input type="date" placeholder="Geburtstag"/>
-<button type="submit">Hinzufügen</button>
+<input type="date" @bind="geburtstag" placeholder="Geburtstag" />
+<button type="submit" @onclick="AddEmployee">Hinzufügen</button>
