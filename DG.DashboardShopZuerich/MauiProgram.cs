@@ -13,15 +13,16 @@ namespace DG.DashboardShopZuerich
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-            //builder.Services.AddBlazorWebViewDeveloperTools();
-            //builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 
-            // JsonDataService als Singleton registrieren
+            builder.Services.AddSingleton<JsonDataService>();
 #endif
             return builder.Build();
         }
