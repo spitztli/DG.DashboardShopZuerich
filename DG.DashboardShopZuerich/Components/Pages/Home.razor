@@ -9,3 +9,11 @@
 <label>Geburtstag</label>
 <input type="date" @bind="geburtstag" placeholder="Geburtstag" />
 <button type="submit" @onclick="AddEmployee">Hinzufügen</button>
+
+<label for="cars">Choose a car:</label>
+<select id="cars" name="cars">
+	@foreach (var employee in @employees)
+	{
+		<option value="@employee.Name">@employee.Vorname</option>
+	}
+</select>

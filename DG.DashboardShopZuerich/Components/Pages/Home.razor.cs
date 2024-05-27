@@ -11,10 +11,16 @@ namespace DG.DashboardShopZuerich.Components.Pages
         private string name;
         private string vorname;
         private DateTime geburtstag = DateTime.Now;
-        private List<Employees> employees;
+		private List<Employees> employees = new List<Employees>();
 
-        [Inject] 
-        private JsonDataService? JsonDataService { get; set; }
+
+		[Inject] 
+        private JsonDataService JsonDataService { get; set; }
+
+        protected override void OnInitialized()
+        {
+            employees = JsonDataService.LoadEmployees();
+        }
         private void AddEmployee()
         {
             List<Employees> employees = JsonDataService.LoadEmployees();
