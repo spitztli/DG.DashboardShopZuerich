@@ -24,6 +24,7 @@ namespace DG.DashboardShopZuerich.Components.Pages
         {
             employees = JsonDataService.LoadEmployees();
         }
+
         private void AddEmployee()
         {
             List<Employees> employees = JsonDataService.LoadEmployees();

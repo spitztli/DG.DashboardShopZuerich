@@ -26,6 +26,15 @@
             <option alue="@employee.Vorname">@employee.Vorname</option>
         }
     </select>
-    <input type="text" @bind-="time" placeholder="Zeit --:--">
+    <input type="text" @bind="time" placeholder="Zeit --:--">
     <button type="submit" @onclick="CreateLunchPlan">Hinzufügen</button>
 </div>
+
+
+<h3>Mittagsplan</h3>
+<ul>
+    @foreach (var entry in lunchPlan)
+    {
+        <li>@entry.PersonOne und @entry.PersonTwo um @entry.Time</li>
+    }
+</ul>
