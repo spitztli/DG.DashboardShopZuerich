@@ -9,17 +9,21 @@ namespace DG.DashboardShopZuerich.Services
     {
         private readonly string filePath = Path.Combine(FileSystem.AppDataDirectory, "employeeList.json");
 
-        public List<Employees> LoadEmployees()
-        {
-            if (File.Exists(filePath))
-            {
-                string jsonString = File.ReadAllText(filePath);
-                return JsonSerializer.Deserialize<List<Employees>>(jsonString);
-            }
-            return new List<Employees>();
-        }
+		public List<Employees> LoadEmployees()
+		{
+			if (File.Exists(filePath))
+			{
+				string jsonString = File.ReadAllText(filePath);
+				if (string.IsNullOrWhiteSpace(jsonString))
+				{
+					return new List<Employees>();
+				}
+				return JsonSerializer.Deserialize<List<Employees>>(jsonString);
+			}
+			return new List<Employees>();
+		}
 
-        public void SaveEmployees(List<Employees> employeesList)
+		public void SaveEmployees(List<Employees> employeesList)
         {
             string jsonString = JsonSerializer.Serialize(employeesList);
             File.WriteAllText(filePath, jsonString);
