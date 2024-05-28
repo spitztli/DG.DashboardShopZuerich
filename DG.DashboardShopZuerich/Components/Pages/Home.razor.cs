@@ -10,7 +10,7 @@ namespace DG.DashboardShopZuerich.Components.Pages
     {
         private string name;
         private string vorname;
-        private DateTime geburtstag = DateTime.Now;
+        private DateOnly geburtstag = DateOnly.FromDateTime(DateTime.Now);
 		private List<Employees> employees = new List<Employees>();
 
 
@@ -38,7 +38,7 @@ namespace DG.DashboardShopZuerich.Components.Pages
 
             name = string.Empty;
             vorname = string.Empty;
-            geburtstag = DateTime.Now;
+            geburtstag = DateOnly.Parse(geburtstag.ToString());
         }
     }
 }
