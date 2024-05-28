@@ -2,18 +2,30 @@
 
 <h1>Digitec Dashboard Züri</h1>
 
-<label>Name</label>
+
+<h3>Mitarbeiter hinzufügen</h3>
 <input type="text" @bind="name" placeholder="Name" />
-<label>Vorname</label>
 <input type="text" @bind="vorname" placeholder="Vorname" />
 <label>Geburtstag</label>
 <input type="date" @bind="geburtstag" placeholder="Geburtstag" />
 <button type="submit" @onclick="AddEmployee">Hinzufügen</button>
 
-<label for="cars">Choose a car:</label>
-<select id="cars" name="cars">
-	@foreach (var employee in @employees)
-	{
-		<option value="@employee.Name">@employee.Vorname</option>
-	}
-</select>
+<h3>Mittagsplan erstellen</h3>
+<div>
+    <select @bind="personOne">
+        <option value="">Wählen Sie eine Person</option>
+        @foreach (var employee in employees)
+        {
+            <option alue="@employee.Vorname">@employee.Vorname</option>
+        }
+    </select>
+    <select @bind="personTwo">
+        <option value="">Wählen Sie eine Person</option>
+        @foreach (var employee in employees)
+        {
+            <option alue="@employee.Vorname">@employee.Vorname</option>
+        }
+    </select>
+    <input type="text" @bind-="time" placeholder="Zeit --:--">
+    <button type="submit" @onclick="CreateLunchPlan">Hinzufügen</button>
+</div>
