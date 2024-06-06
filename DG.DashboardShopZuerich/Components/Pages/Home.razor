@@ -1,40 +1,50 @@
 ﻿@page "/"
 
-<h1>Digitec Dashboard Züri</h1>
+<div class="container">
+    <header>
+        <h1>Digitec Dashboard Züri</h1>
+    </header>
 
+    <section id="addEmployee">
+        <h3>Mitarbeiter hinzufügen</h3>
+        <form>
+            <input type="text" @bind="name" placeholder="Name" />
+            <input type="text" @bind="vorname" placeholder="Vorname" />
+            <label for="geburtstag">Geburtstag</label>
+            <input type="date" @bind="geburtstag" />
+            <button type="submit" @onclick="AddEmployee">Hinzufügen</button>
+        </form>
+    </section>
 
-<h3>Mitarbeiter hinzufügen</h3>
-<input type="text" @bind="name" placeholder="Name" />
-<input type="text" @bind="vorname" placeholder="Vorname" />
-<label>Geburtstag</label>
-<input type="date" @bind="geburtstag" placeholder="Geburtstag" />
-<button type="submit" @onclick="AddEmployee">Hinzufügen</button>
+    <section id="createLunchPlan">
+        <h3>Mittagsplan erstellen</h3>
+        <div>
+            <select @bind="personOne">
+                <option value="">Wählen Sie eine Person</option>
+                @foreach (var employee in employees)
+                {
+                    <option alue="@employee.Vorname">@employee.Vorname</option>
+                }
+            </select>
+            <select @bind="personTwo">
+                <option value="">Wählen Sie eine Person</option>
+                @foreach (var employee in employees)
+                {
+                    <option alue="@employee.Vorname">@employee.Vorname</option>
+                }
+            </select>
+            <input type="text" @bind="time" placeholder="Zeit --:--">
+            <button type="submit" @onclick="AddPersonToLunchPlan">Hinzufügen</button>
+        </div>
+    </section>
 
-<h3>Mittagsplan erstellen</h3>
-<div>
-    <select @bind="personOne">
-        <option value="">Wählen Sie eine Person</option>
-        @foreach (var employee in employees)
-        {
-            <option alue="@employee.Vorname">@employee.Vorname</option>
-        }
-    </select>
-    <select @bind="personTwo">
-        <option value="">Wählen Sie eine Person</option>
-        @foreach (var employee in employees)
-        {
-            <option alue="@employee.Vorname">@employee.Vorname</option>
-        }
-    </select>
-    <input type="text" @bind="time" placeholder="Zeit --:--">
-    <button type="submit" @onclick="AddPersonToLunchPlan">Hinzufügen</button>
+    <section id="lunchPlan">
+        <h3>Mittagsplan</h3>
+        <ul>
+            @foreach (var entry in lunchPlan)
+            {
+                <li>@entry.PersonOne und @entry.PersonTwo um @entry.Time</li>
+            }
+        </ul>
+    </section>
 </div>
-
-
-<h3>Mittagsplan</h3>
-<ul>
-    @foreach (var entry in lunchPlan)
-    {
-        <li>@entry.PersonOne und @entry.PersonTwo um @entry.Time</li>
-    }
-</ul>
