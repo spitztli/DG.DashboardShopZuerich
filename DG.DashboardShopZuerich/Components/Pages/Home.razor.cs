@@ -23,6 +23,7 @@ namespace DG.DashboardShopZuerich.Components.Pages
         protected override void OnInitialized()
         {
             employees = JsonDataService.LoadEmployees();
+            lunchPlan = JsonDataService.LoadLunchPlan();
         }
 
         private void AddEmployee()
@@ -45,23 +46,27 @@ namespace DG.DashboardShopZuerich.Components.Pages
             geburtstag = DateOnly.Parse(geburtstag.ToString());
         }
 
-        private void CreateLunchPlan()
+        private void AddPersonToLunchPlan()
         {
-            Console.WriteLine("CreateLunchPlan aufgerufen"); // Debug-Meldung
+            List<LunchPlan> person = JsonDataService.LoadLunchPlan();
 
-            if (!string.IsNullOrEmpty(personOne) && !string.IsNullOrEmpty(personTwo) && !string.IsNullOrEmpty(time))
+            LunchPlan newPerson = new LunchPlan
             {
-                lunchPlan.Add(new LunchPlan { PersonOne = personOne, PersonTwo = personTwo, Time = time });
-                personOne = string.Empty;
-                personTwo = string.Empty;
-                time = string.Empty;
+                PersonOne = personOne,
+                PersonTwo = personTwo,
+                Time = time
+            };
 
-                StateHasChanged();
-            }
-            else
-            {
-                Console.WriteLine("Fehlende Eingaben"); // Debug-Meldung
-            }
+            person.Add(newPerson);
+
+            JsonDataService.SavePersonToLuchPlan(person);
+
+            personOne = string.Empty;
+            personTwo = string.Empty;
+            time = string.Empty;
+
+            lunchPlan.Add(newPerson);
+            StateHasChanged();
         }
     }
 }
